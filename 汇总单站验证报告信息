@@ -1,0 +1,332 @@
+Sub 汇总单站验证报告信息()
+
+Dim x As Integer
+Dim y As Integer
+
+'去同一文件夹中引入xls的文件
+
+    Dim MyPath$, MyName$, i&, m&, n&, l&
+    i = 1
+    MyPath = ThisWorkbook.Path & "\"
+    MyName = Dir(MyPath & "*.xls")
+    Application.DisplayAlerts = False
+    'Range("b2:bu65536").ClearContents
+    Do While MyName <> ""
+        If MyName <> ThisWorkbook.Name Then
+            i = i + 1
+            With GetObject(MyPath & MyName).Sheets(1)
+            
+    y = i + 2
+        
+        '参数验证-》基站参数的规划数据
+              
+Cells(y, 2) = .Range("E7")  '站名
+Cells(y, 3) = .Range("E9")  '站号
+Cells(y, 4) = .Range("E11")  '地址
+Cells(y, 5) = .Range("F13")  '设备类型
+Cells(y, 6) = .Range("Z7")  '日期
+Cells(y, 7) = .Range("Z9")  '区县
+Cells(y, 8) = .Range("Z11")  '站型
+
+'业务区域分类
+Cells(y, 9) = .Range("J15")  '一扇区
+Cells(y, 10) = .Range("R15")  '二扇区
+Cells(y, 11) = .Range("Z15")  '三扇区
+'参数验证
+    '基站信息
+        '规划数据
+Cells(y, 12) = .Range("H21")  '经度
+Cells(y, 13) = .Range("H22")  '纬度
+Cells(y, 14) = .Range("H23")  '海拔
+Cells(y, 15) = .Range("H24")  'RNC
+Cells(y, 16) = .Range("H25")  'LAC
+Cells(y, 17) = .Range("H26")  'RAC
+Cells(y, 18) = .Range("H27")  'NodeBID
+
+        '实测数据
+Cells(y, 19) = .Range("N21")  '经度
+Cells(y, 20) = .Range("N22")  '纬度
+Cells(y, 21) = .Range("N23")  '海拔
+Cells(y, 22) = .Range("N24")  'RNC
+Cells(y, 23) = .Range("N25")  'LAC
+Cells(y, 24) = .Range("N26")  'RAC
+Cells(y, 25) = .Range("N27")  'NodeBID
+
+        '验证通过
+Cells(y, 26) = .Range("T21")  '经度
+Cells(y, 27) = .Range("T22")  '纬度
+Cells(y, 28) = .Range("T23")  '海拔
+Cells(y, 29) = .Range("T24")  'RNC
+Cells(y, 30) = .Range("T25")  'LAC
+Cells(y, 31) = .Range("T26")  'RAC
+Cells(y, 32) = .Range("T27")  'NodeBID
+    '小区参数
+        '1扇区 规划数据
+Cells(y, 33) = .Range("H31")  '小区ID
+Cells(y, 34) = .Range("H32")  '扰码
+Cells(y, 35) = .Range("H33")  '主频点
+Cells(y, 36) = .Range("H34")  '第一辅载波
+Cells(y, 37) = .Range("H35")  '第二辅载波
+Cells(y, 38) = .Range("H36")  '第三辅载波
+Cells(y, 39) = .Range("H37")  '第四辅载波
+Cells(y, 40) = .Range("H38")  '第五辅载波
+Cells(y, 41) = .Range("H39")  'MaxPower(dBm)
+Cells(y, 42) = .Range("H40")  'PCCPCH发射功率(dBm)
+Cells(y, 43) = .Range("H41")  'FPACH发射功率(dBm)
+Cells(y, 44) = .Range("H42")  'DwPCH发射功率(dBm)
+Cells(y, 45) = .Range("H43")  '天线挂高（米）
+Cells(y, 46) = .Range("H44")  '天线型号
+Cells(y, 47) = .Range("H45")  '方位角（度）
+Cells(y, 48) = .Range("H46")  '总下倾角（度）
+Cells(y, 49) = .Range("H47")  '预制电下倾（度）
+Cells(y, 50) = .Range("H48")  '机械下倾角（度）
+
+        '1扇区 实测数据
+Cells(y, 51) = .Range("K31")  '小区ID
+Cells(y, 52) = .Range("K32")  '扰码
+Cells(y, 53) = .Range("K33")  '主频点
+Cells(y, 54) = .Range("K34")  '第一辅载波
+Cells(y, 55) = .Range("K35")  '第二辅载波
+Cells(y, 56) = .Range("K36")  '第三辅载波
+Cells(y, 57) = .Range("K37")  '第四辅载波
+Cells(y, 58) = .Range("K38")  '第五辅载波
+Cells(y, 59) = .Range("K39")  'MaxPower(dBm)
+Cells(y, 60) = .Range("K40")  'PCCPCH发射功率(dBm)
+Cells(y, 61) = .Range("K41")  'FPACH发射功率(dBm)
+Cells(y, 62) = .Range("K42")  'DwPCH发射功率(dBm)
+Cells(y, 63) = .Range("K43")  '天线挂高（米）
+Cells(y, 64) = .Range("K44")  '天线型号
+Cells(y, 65) = .Range("K45")  '方位角（度）
+Cells(y, 66) = .Range("K46")  '总下倾角（度）
+Cells(y, 67) = .Range("K47")  '预制电下倾（度）
+Cells(y, 68) = .Range("K48")  '机械下倾角（度）
+
+        '1扇区 结果
+Cells(y, 69) = .Range("N31")  '小区ID
+Cells(y, 70) = .Range("N32")  '扰码
+Cells(y, 71) = .Range("N33")  '主频点
+Cells(y, 72) = .Range("N34")  '第一辅载波
+Cells(y, 73) = .Range("N35")  '第二辅载波
+Cells(y, 74) = .Range("N36")  '第三辅载波
+Cells(y, 75) = .Range("N37")  '第四辅载波
+Cells(y, 76) = .Range("N38")  '第五辅载波
+Cells(y, 77) = .Range("N39")  'MaxPower(dBm)
+Cells(y, 78) = .Range("N40")  'PCCPCH发射功率(dBm)
+Cells(y, 79) = .Range("N41")  'FPACH发射功率(dBm)
+Cells(y, 80) = .Range("N42")  'DwPCH发射功率(dBm)
+Cells(y, 81) = .Range("N43")  '天线挂高（米）
+Cells(y, 82) = .Range("N44")  '天线型号
+Cells(y, 83) = .Range("N45")  '方位角（度）
+Cells(y, 84) = .Range("N46")  '总下倾角（度）
+Cells(y, 85) = .Range("N47")  '预制电下倾（度）
+Cells(y, 86) = .Range("N48")  '机械下倾角（度）
+
+         '2扇区 规划数据
+Cells(y, 87) = .Range("P31")  '小区ID
+Cells(y, 88) = .Range("P32")  '扰码
+Cells(y, 89) = .Range("P33")  '主频点
+Cells(y, 90) = .Range("P34")  '第一辅载波
+Cells(y, 91) = .Range("P35")  '第二辅载波
+Cells(y, 92) = .Range("P36")  '第三辅载波
+Cells(y, 93) = .Range("P37")  '第四辅载波
+Cells(y, 94) = .Range("P38")  '第五辅载波
+Cells(y, 95) = .Range("P39")  'MaxPower(dBm)
+Cells(y, 96) = .Range("P40")  'PCCPCH发射功率(dBm)
+Cells(y, 97) = .Range("P41")  'FPACH发射功率(dBm)
+Cells(y, 98) = .Range("P42")  'DwPCH发射功率(dBm)
+Cells(y, 99) = .Range("P43")  '天线挂高（米）
+Cells(y, 100) = .Range("P44")  '天线型号
+Cells(y, 101) = .Range("P45")  '方位角（度）
+Cells(y, 102) = .Range("P46")  '总下倾角（度）
+Cells(y, 103) = .Range("P47")  '预制电下倾（度）
+Cells(y, 104) = .Range("P48")  '机械下倾角（度）
+
+         '2扇区 实测数据
+Cells(y, 105) = .Range("S31")  '小区ID
+Cells(y, 106) = .Range("S32")  '扰码
+Cells(y, 107) = .Range("S33")  '主频点
+Cells(y, 108) = .Range("S34")  '第一辅载波
+Cells(y, 109) = .Range("S35")  '第二辅载波
+Cells(y, 110) = .Range("S36")  '第三辅载波
+Cells(y, 111) = .Range("S37")  '第四辅载波
+Cells(y, 112) = .Range("S38")  '第五辅载波
+Cells(y, 113) = .Range("S39")  'MaxPower(dBm)
+Cells(y, 114) = .Range("S40")  'PCCPCH发射功率(dBm)
+Cells(y, 115) = .Range("S41")  'FPACH发射功率(dBm)
+Cells(y, 116) = .Range("S42")  'DwPCH发射功率(dBm)
+Cells(y, 117) = .Range("S43")  '天线挂高（米）
+Cells(y, 118) = .Range("S44")  '天线型号
+Cells(y, 119) = .Range("S45")  '方位角（度）
+Cells(y, 120) = .Range("S46")  '总下倾角（度）
+Cells(y, 121) = .Range("S47")  '预制电下倾（度）
+Cells(y, 122) = .Range("S48")  '机械下倾角（度）
+
+          '2扇区 结果
+Cells(y, 123) = .Range("V31")  '小区ID
+Cells(y, 124) = .Range("V32")  '扰码
+Cells(y, 125) = .Range("V33")  '主频点
+Cells(y, 126) = .Range("V34")  '第一辅载波
+Cells(y, 127) = .Range("V35")  '第二辅载波
+Cells(y, 128) = .Range("V36")  '第三辅载波
+Cells(y, 129) = .Range("V37")  '第四辅载波
+Cells(y, 130) = .Range("V38")  '第五辅载波
+Cells(y, 131) = .Range("V39")  'MaxPower(dBm)
+Cells(y, 132) = .Range("V40")  'PCCPCH发射功率(dBm)
+Cells(y, 133) = .Range("V41")  'FPACH发射功率(dBm)
+Cells(y, 134) = .Range("V42")  'DwPCH发射功率(dBm)
+Cells(y, 135) = .Range("V43")  '天线挂高（米）
+Cells(y, 136) = .Range("V44")  '天线型号
+Cells(y, 137) = .Range("V45")  '方位角（度）
+Cells(y, 138) = .Range("V46")  '总下倾角（度）
+Cells(y, 139) = .Range("V47")  '预制电下倾（度）
+Cells(y, 140) = .Range("V48")  '机械下倾角（度）
+
+          '3扇区 规划数据
+Cells(y, 141) = .Range("X31")  '小区ID
+Cells(y, 142) = .Range("X32")  '扰码
+Cells(y, 143) = .Range("X33")  '主频点
+Cells(y, 144) = .Range("X34")  '第一辅载波
+Cells(y, 145) = .Range("X35")  '第二辅载波
+Cells(y, 146) = .Range("X36")  '第三辅载波
+Cells(y, 147) = .Range("X37")  '第四辅载波
+Cells(y, 148) = .Range("X38")  '第五辅载波
+Cells(y, 149) = .Range("X39")  'MaxPower(dBm)
+Cells(y, 150) = .Range("X40")  'PCCPCH发射功率(dBm)
+Cells(y, 151) = .Range("X41")  'FPACH发射功率(dBm)
+Cells(y, 152) = .Range("X42")  'DwPCH发射功率(dBm)
+Cells(y, 153) = .Range("X43")  '天线挂高（米）
+Cells(y, 154) = .Range("X44")  '天线型号
+Cells(y, 155) = .Range("X45")  '方位角（度）
+Cells(y, 156) = .Range("X46")  '总下倾角（度）
+Cells(y, 157) = .Range("X47")  '预制电下倾（度）
+Cells(y, 158) = .Range("X48")  '机械下倾角（度）
+
+         '3扇区 实测数据
+Cells(y, 159) = .Range("AA31")  '小区ID
+Cells(y, 160) = .Range("AA32")  '扰码
+Cells(y, 161) = .Range("AA33")  '主频点
+Cells(y, 162) = .Range("AA34")  '第一辅载波
+Cells(y, 163) = .Range("AA35")  '第二辅载波
+Cells(y, 164) = .Range("AA36")  '第三辅载波
+Cells(y, 165) = .Range("AA37")  '第四辅载波
+Cells(y, 166) = .Range("AA38")  '第五辅载波
+Cells(y, 167) = .Range("AA39")  'MaxPower(dBm)
+Cells(y, 168) = .Range("AA40")  'PCCPCH发射功率(dBm)
+Cells(y, 169) = .Range("AA41")  'FPACH发射功率(dBm)
+Cells(y, 170) = .Range("AA42")  'DwPCH发射功率(dBm)
+Cells(y, 171) = .Range("AA43")  '天线挂高（米）
+Cells(y, 172) = .Range("AA44")  '天线型号
+Cells(y, 173) = .Range("AA45")  '方位角（度）
+Cells(y, 174) = .Range("AA46")  '总下倾角（度）
+Cells(y, 175) = .Range("AA47")  '预制电下倾（度）
+Cells(y, 176) = .Range("AA48")  '机械下倾角（度）
+
+         '3扇区 结果
+Cells(y, 177) = .Range("AD31")  '小区ID
+Cells(y, 178) = .Range("AD32")  '扰码
+Cells(y, 179) = .Range("AD33")  '主频点
+Cells(y, 180) = .Range("AD34")  '第一辅载波
+Cells(y, 181) = .Range("AD35")  '第二辅载波
+Cells(y, 182) = .Range("AD36")  '第三辅载波
+Cells(y, 183) = .Range("AD37")  '第四辅载波
+Cells(y, 184) = .Range("AD38")  '第五辅载波
+Cells(y, 185) = .Range("AD39")  'MaxPower(dBm)
+Cells(y, 186) = .Range("AD40")  'PCCPCH发射功率(dBm)
+Cells(y, 187) = .Range("AD41")  'FPACH发射功率(dBm)
+Cells(y, 188) = .Range("AD42")  'DwPCH发射功率(dBm)
+Cells(y, 189) = .Range("AD43")  '天线挂高（米）
+Cells(y, 190) = .Range("AD44")  '天线型号
+Cells(y, 191) = .Range("AD45")  '方位角（度）
+Cells(y, 192) = .Range("AD46")  '总下倾角（度）
+Cells(y, 193) = .Range("AD47")  '预制电下倾（度）
+Cells(y, 194) = .Range("AD48")  '机械下倾角（度）
+
+    '功能验证  '扇区1
+Cells(y, 195) = .Range("L56")  'CS语音业务（主叫）
+Cells(y, 196) = .Range("L57")  'CS语音业务（被叫）
+Cells(y, 197) = .Range("L58")  'VP业务（主叫）
+Cells(y, 198) = .Range("L59")  'VP业务（被叫）
+Cells(y, 199) = .Range("L60")  'PS业务（附着）
+Cells(y, 200) = .Range("L61")  'PS业务（激活）
+Cells(y, 201) = .Range("L62")  'PS64FTP下载
+Cells(y, 202) = .Range("L63")  'PS128FTP下载
+Cells(y, 203) = .Range("L64")  'PS384FTP下载
+Cells(y, 204) = .Range("L65")  'PS64FTP上传
+Cells(y, 205) = .Range("L66")  'HSDPA FTP下载
+    '扇区2
+Cells(y, 206) = .Range("Q56")  'CS语音业务（主叫）
+Cells(y, 207) = .Range("Q57")  'CS语音业务（被叫）
+Cells(y, 208) = .Range("Q58")  'VP业务（主叫）
+Cells(y, 209) = .Range("Q59")  'VP业务（被叫）
+Cells(y, 210) = .Range("Q60")  'PS业务（附着）
+Cells(y, 211) = .Range("Q61")  'PS业务（激活）
+Cells(y, 212) = .Range("Q62")  'PS64FTP下载
+Cells(y, 213) = .Range("Q63")  'PS128FTP下载
+Cells(y, 214) = .Range("Q64")  'PS384FTP下载
+Cells(y, 215) = .Range("Q65")  'PS64FTP上传
+Cells(y, 216) = .Range("Q66")  'HSDPA FTP下载
+      '扇区3
+Cells(y, 217) = .Range("V56")  'CS语音业务（主叫）
+Cells(y, 218) = .Range("V57")  'CS语音业务（被叫）
+Cells(y, 219) = .Range("V58")  'VP业务（主叫）
+Cells(y, 220) = .Range("V59")  'VP业务（被叫）
+Cells(y, 221) = .Range("V60")  'PS业务（附着）
+Cells(y, 222) = .Range("V61")  'PS业务（激活）
+Cells(y, 223) = .Range("V62")  'PS64FTP下载
+Cells(y, 224) = .Range("V63")  'PS128FTP下载
+Cells(y, 225) = .Range("V64")  'PS384FTP下载
+Cells(y, 226) = .Range("V65")  'PS64FTP上传
+Cells(y, 227) = .Range("V66")  'HSDPA FTP下载
+
+'切换验证 CS业务
+
+Cells(y, 228) = .Range("N73")  '1>2>3>1
+Cells(y, 229) = .Range("N74")  '1>3>2>1
+'PS 业务
+
+Cells(y, 230) = .Range("T73")  '1>2>3>1
+Cells(y, 231) = .Range("T74")  '1>3>2>1
+'交叉扇区 CS业务
+Cells(y, 232) = .Range("N78")  'Sect.1 / Sect. 2
+Cells(y, 233) = .Range("N79")  'Sect.1 / Sect. 3
+Cells(y, 234) = .Range("N80")  'Sect.2 / Sect. 3
+'交叉扇区 PS业务
+Cells(y, 235) = .Range("T78")  'Sect.1 / Sect. 2
+Cells(y, 236) = .Range("T79")  'Sect.1 / Sect. 3
+Cells(y, 237) = .Range("T80")  'Sect.2 / Sect. 3
+
+'验证是否通过
+Cells(y, 238) = .Range("H84")  '是否通过
+Cells(y, 239) = .Range("A87")  '备注
+
+Cells(y, 240) = .Range("I103")  '网优工程师
+
+'核对数据是否准确
+'统计表中的经纬度
+Cells(y, 241) = "=VLOOKUP(RC[-238],Sheet5!C[-239]:C[-233],6,0)"
+Cells(y, 242) = "=VLOOKUP(RC[-239],Sheet5!C[-240]:C[-234],7,0)"
+'核对是否一致
+Cells(y, 243) = "=IF(RC[-2]=RC[-224],""是"")"
+Cells(y, 244) = "=IF(R[1]C[-3]=R[1]C[-225],""是"")"
+
+        
+          ' 以下部分为打开同文件夹下文件内容
+          
+            End With
+            With GetObject(MyPath & MyName)
+                .IsAddin = True
+                .IsAddin = False
+                .Close True
+            End With
+        End If
+        MyName = Dir
+    Loop
+    Application.DisplayAlerts = True
+    
+    
+
+
+    
+    
+End Sub
+
